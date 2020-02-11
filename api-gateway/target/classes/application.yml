@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+
+zuul:
+  routes:
+    cake-service:
+      path: /**
+      url: http://localhost:8501
+
+  host:
+    socket-timeout-millis: 30000
+    connect-timeout-millis: 30000
+  ignored-patterns:
+    - /login
